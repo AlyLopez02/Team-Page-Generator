@@ -1,20 +1,25 @@
 // Imports
-const manager = require('./lib/manager');
-const engineer = require('./lib/engineer');
-const intern = require('./lib/intern');
+const Manager = require('./lib/manager');
+const Engineer = require('./lib/engineer');
+const Intern = require('./lib/intern');
 
 const inquirer = require('inquirer');
 const path = require('path');
 const fs = require('fs');
 
-// import page template function & assign to a variable
+const pageTemplate  = require('./src/page-template');
+
+// I am unsure about these
+// const outputFolder = ;
+// const fileName = 'team-page.html';
 
 const teamMembers = [];
-
 const employeeIds = [];
 
 // Functions
-inquirer.prompt([
+
+function managerFunction (){
+    inquirer.prompt([
     {
         type: '',
         message: '',
@@ -26,3 +31,4 @@ inquirer.prompt([
         name: ''
     }
 ])
+}
