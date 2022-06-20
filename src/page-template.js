@@ -64,3 +64,6 @@ function generateInternCard(){
 </div>
 </div>
 `
+
+
+module.exports = generateHTML;

@@ -7,7 +7,7 @@ const inquirer = require('inquirer');
 const path = require('path');
 const fs = require('fs');
 
-const pageTemplate  = require('./src/page-template'); //apparently not done correctly either
+const pageTemplate = require('./src/page-template'); 
 
 // I am unsure about these
 // const outputFolder = ;
