@@ -1,8 +1,9 @@
 
 const Employee = require("../lib/Employee");
 
-// test instantiation of employee instance
+describe("Employee", () => {
 
+// test instantiation of employee instance
 test("", () => {
 
 });
@@ -16,7 +17,7 @@ test("", () => {
     expect(this.name).toBe('Joel')
 });
 
-// test constructor initialized wtih an id
+// test constructor initialized with an id
 test("", () => {
 
 });
@@ -27,28 +28,25 @@ test("", () => {
 });
 
 // test get name method
-test("", () => {
+test("getName() should return this.name", () => {
 
 });
 
 // test get Id method
-test(")", () => {
+test("getId() should return this.id", () => {
 
 });
 
 // test get email method
-test("", () => {
+test("getEmail() should return this.email", () => {
 
 });
 
 // test get role method. it should return "Employee"
-test("", () => {
-
+test("getRole() should return 'Employee'", () => {
+    expect(getRole()).toBe('Employee');
 });
 
 
-
-//May need to put all of the tests in here
-// describe(Employee, () => {
     
-// })
+})
