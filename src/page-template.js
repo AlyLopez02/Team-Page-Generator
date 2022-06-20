@@ -1,51 +1,57 @@
-function generateHTML(){
+function generateHTML() {
     return ``
 
 }
 
-function generateManagerCard(){
-    const managerCard =  `
-    <div class="col-5 mt-2">
-        <div class="card">
-            <div class="card-header">  
-            Manager <span><i class="fa-solid fa-mug-saucer"></i></span>
-            </div>
-            <div class="card-body">
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            </div>
-          </div>
+function generateManagerCard() {
+    const managerCard = `
+    <div class="card m-2" style="width: 18rem;">
+    <div class="card-header">
+      <h4>${}</h4>
+      <h5>Manager <span><i class="fa-solid fa-mug-saucer"></i></span></h5>
     </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Name: ${}</li>
+      <li class="list-group-item">Id: ${}</li>
+      <li class="list-group-item">Email: <a href="${}">${}</a></li>
+      <li class="list-group-item">Office Number: ${}</li>
+    </ul>
+</div>
     `
 }
 
-function generateEngineerCard(){
-    const engineerCard =  `
-    <div class="col-5 mt-2">
-        <div class="card">
-            <div class="card-header">  
-            Manager <span><i class="fa-solid fa-mug-saucer"></i></span>
-            </div>
-            <div class="card-body">
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            </div>
-          </div>
+function generateEngineerCard() {
+    const engineerCard = `
+    <div class="card m-2" style="width: 18rem;">
+    <div class="card-header">
+      <h4>${}</h4>
+      <h5>Engineer <span><i class="fa-solid fa-glasses"></i></span></h5>
     </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Name: ${}</li>
+      <li class="list-group-item">Id: ${}</li>
+      <li class="list-group-item">Email: <a href="${}">${}</a></li>
+      <li class="list-group-item">GitHub: ${}</li>
+    </ul>
+</div>
     `
 }
 
-function generateInternCard(){
-    const internCard =  `
-    <div class="col-5 mt-2">
-        <div class="card">
-            <div class="card-header">  
-            Manager <span><i class="fa-solid fa-mug-saucer"></i></span>
-            </div>
-            <div class="card-body">
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            </div>
-          </div>
+function generateInternCard() {
+    const internCard = `
+    <div class="card m-2" style="width: 18rem;">
+    <div class="card-header">
+      <h4>${}</h4>
+      <h5>Intern <span><i class="fa-solid fa-graduation-cap"></i></span></h5>
     </div>
-    `  
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Name: ${}</li>
+      <li class="list-group-item">Id: ${}</li>
+      <li class="list-group-item">Email: <a href="${}">${}</a></li>
+      <li class="list-group-item">School: ${}</li>
+    </ul>
+</div>
+    `
 }
 
 

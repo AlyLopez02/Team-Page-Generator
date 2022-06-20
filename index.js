@@ -45,8 +45,11 @@ function createManagerFunction (){
     }
 ]).then((response) => {
     // create manager object from manager class by initializing it with the properties in answer object
+
     // push manager object to the empty team memeber object array
+
     // push the manager's id to the empty id array
+    
     createTeam();
 })
 };
