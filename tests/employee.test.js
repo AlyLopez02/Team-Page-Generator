@@ -1,34 +1,43 @@
-
 const Employee = require("../lib/Employee");
 
 describe("Employee", () => {
 
 // test instantiation of employee instance
-test("", () => {
-
+test("Employee class should create an object", () => {
+    expect(new Employee()).toBeInstanceOf(Employee);
 });
 
 // test constructor initialized with a name
-test("", () => {
+test("Constructor initialized with a name", () => {
     const name = 'Joel';
 
-    this.name = name;
+    let obj = new Employee(name);
 
-    expect(this.name).toBe('Joel')
+    expect(obj.name).toBe('Joel');
 });
 
 // test constructor initialized with an id
-test("", () => {
+test("Constructor initialized with an id", () => {
+    const id = 123456789;
 
+    let obj = new Employee(id);
+
+    expect(obj.id).toBe(123456789);
 });
 
 // test constructor initialized with an email address
-test("", () => {
+test("Constructor initialized with an email address", () => {
+    const emailAddress = 'johndoe@placeholder.com';
 
+    let obj = new Employee(emailAddress);
+
+    expect(obj.emailAddress).toBe('johndoe@placeholder.com');
 });
 
 // test get name method
 test("getName() should return this.name", () => {
+
+    expect(Employee.getName()).toBe('Joel'); //I am unsure if this is correct
 
 });
 
@@ -44,7 +53,7 @@ test("getEmail() should return this.email", () => {
 
 // test get role method. it should return "Employee"
 test("getRole() should return 'Employee'", () => {
-    expect(getRole()).toBe('Employee');
+    expect(Employee.getRole()).toBe('Employee');
 });
 
 
