@@ -3,6 +3,18 @@ function generateHTML() {
 
 }
 
+// Function to create team template
+function createTeamTemplate(teamMembers) {
+  const teamTemplates = [];
+
+  const managersArray = teamMembers.filter(obj => {
+    return obj.role === 'Manager';
+  })
+
+  
+};
+
+// Functions to generate employee cards
 function generateManagerCard() {
     const managerCard = `
     <div class="card m-2" style="width: 18rem;">
@@ -31,7 +43,7 @@ function generateEngineerCard() {
       <li class="list-group-item">Name: ${}</li>
       <li class="list-group-item">Id: ${}</li>
       <li class="list-group-item">Email: <a href="${}">${}</a></li>
-      <li class="list-group-item">GitHub: ${}</li>
+      <li class="list-group-item">GitHub: <a href="https://github.com/${}">${}</a></li>
     </ul>
 </div>
     `
@@ -53,6 +65,19 @@ function generateInternCard() {
 </div>
     `
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // What Michael did

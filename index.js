@@ -7,11 +7,11 @@ const inquirer = require('inquirer');
 const path = require('path');
 const fs = require('fs');
 
-const pageTemplate = require('./src/page-template'); 
+const generateHTML = require('./src/page-template');
 
 // I am unsure about these
-// const outputFolder = ;
-// const fileName = 'team-page.html';
+const outputFolder = './dist';
+const fileName = 'team-page.html';
 
 const teamMembers = [];
 const employeeIds = [];
@@ -19,53 +19,50 @@ const employeeIds = [];
 // Functions
 createManagerFunction();
 
-function createManagerFunction (){
+function createManagerFunction() {
     console.info("Hello user! Please answer the questions below to create your team's very own web page!")
-    
+
     inquirer.prompt([
-    {
-        type: 'input',
-        message: "What is the manager's name?",
-        name: 'name'
-    },
-    {
-        type: 'input',
-        message: "What is the manager's id?",
-        name: 'id'
-    },
-    {
-        type: 'input',
-        message: "What is the manager's email?",
-        name: 'email'
-    },
-    {
-        type: 'input',
-        message: "What is the manager's office number?",
-        name: 'officeNumber'
-    }
-]).then((response) => {
-    // create manager object from manager class by initializing it with the properties in answer object
-
-    // push manager object to the empty team memeber object array
-
-    // push the manager's id to the empty id array
-    
-    createTeam();
-})
+        {
+            type: 'input',
+            message: "What is the manager's name?",
+            name: 'name'
+        },
+        {
+            type: 'input',
+            message: "What is the manager's id?",
+            name: 'id'
+        },
+        {
+            type: 'input',
+            message: "What is the manager's email?",
+            name: 'email'
+        },
+        {
+            type: 'input',
+            message: "What is the manager's office number?",
+            name: 'officeNumber'
+        }
+    ]).then(function (data) {
+        const manager = new Manager(data); //THIS MIGHT NEED TO BE EACH THING SEPARATELY AKA data.name, data.id, ....
+        teamMembers.push(manager);
+        employeeIds.push(manager.id);
+        createTeam();
+    })
 };
 
-function createTeam(){
+function createTeam() {
     inquirer.prompt([
         {
             type: 'list',
             message: 'Please select which type of employee you would like to add or select exit if you are done creating your team.',
-            name: '',  //DO NOT FORGET TO ADD A NAME HERE! IDK WHAT TO CALL IT YET BUT DONT FORGET
+            name: 'choice',
             choices: ['Engineer', 'Intern', 'Exit']
         }
-    ]).then((response) => {
-        if (response == 'Engineer'){
+    ]).then(function (data) {
+        if (data.choice === 'Engineer') {
             addEngineer();
-        } else if (response == 'Intern'){
+        } else if (data.choice === 'Intern') {
             addIntern();
         } else {
             buildTeam();
@@ -73,14 +70,69 @@ function createTeam(){
     })
 };
 
-function addEngineer(){
+function addEngineer() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            message: "What is the engineer's name?",
+            name: 'name',
+        },
+        {
+            type: 'input',
+            message: "What is the engineer's id?",
+            name: 'id'
+        },
+        {
+            type: 'input',
+            message: "What is the engineers's email?",
+            name: 'email'
+        },
+        {
+            type: 'input',
+            message: "What is the engineer's GitHub username?",
+            name: 'github'
+        }
+    ]).then(function (data) {
+        const engineer = new Engineer(data); //THIS MIGHT NEED TO BE EACH THING SEPARATELY AKA data.name, data.id, ....
+        teamMembers.push(engineer);
+        employeeIds.push(engineer.id);
+        createTeam();
+    })
 
 };
 
-function addIntern(){
-
+function addIntern() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            message: "What is the intern's name?",
+            name: 'name',
+        },
+        {
+            type: 'input',
+            message: "What is the intern's id?",
+            name: 'id'
+        },
+        {
+            type: 'input',
+            message: "What is the intern's email?",
+            name: 'email'
+        },
+        {
+            type: 'input',
+            message: "What is the intern's school?",
+            name: 'github'
+        }
+    ]).then(function (data) {
+        const intern = new Intern(data); //THIS MIGHT NEED TO BE EACH THING SEPARATELY AKA data.name, data.id, ....
+        teamMembers.push(intern);
+        employeeIds.push(intern.id);
+        createTeam();
+    })
 };
 
-function buildTeam(){
+function buildTeam() {
+    generateHTML(teamMembers);
 
+    // NOT DONE YET ALDSIHGALIDFGLAKJLDGJFAJDFL;
 };
