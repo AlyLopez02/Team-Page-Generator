@@ -44,9 +44,9 @@ function createManagerFunction() {
             name: 'officeNumber'
         }
     ]).then(function (data) {
-        const manager = new Manager(data); //THIS MIGHT NEED TO BE EACH THING SEPARATELY AKA data.name, data.id, ....
-        teamMembers.push(manager);
-        employeeIds.push(manager.id);
+        const managerObj = new Manager(data); //THIS MIGHT NEED TO BE EACH THING SEPARATELY AKA data.name, data.id, ....
+        teamMembers.push(managerObj);
+        employeeIds.push(managerObj.id);
         createTeam();
     })
 };
@@ -93,9 +93,9 @@ function addEngineer() {
             name: 'github'
         }
     ]).then(function (data) {
-        const engineer = new Engineer(data); //THIS MIGHT NEED TO BE EACH THING SEPARATELY AKA data.name, data.id, ....
-        teamMembers.push(engineer);
-        employeeIds.push(engineer.id);
+        const engineerObj = new Engineer(data); //THIS MIGHT NEED TO BE EACH THING SEPARATELY AKA data.name, data.id, ....
+        teamMembers.push(engineerObj);
+        employeeIds.push(engineerObj.id);
         createTeam();
     })
 
@@ -124,9 +124,9 @@ function addIntern() {
             name: 'github'
         }
     ]).then(function (data) {
-        const intern = new Intern(data); //THIS MIGHT NEED TO BE EACH THING SEPARATELY AKA data.name, data.id, ....
-        teamMembers.push(intern);
-        employeeIds.push(intern.id);
+        const internObj = new Intern(data); //THIS MIGHT NEED TO BE EACH THING SEPARATELY AKA data.name, data.id, ....
+        teamMembers.push(internObj);
+        employeeIds.push(internObj.id);
         createTeam();
     })
 };

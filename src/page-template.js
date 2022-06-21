@@ -1,100 +1,129 @@
-function generateHTML() {
-    return ``
+function generateHTML(teamMembers) {
+  return `
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/dist/style.css">
+
+    <title>Team Page</title>
+
+    <script src="https://kit.fontawesome.com/0ad641d2c3.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <header class="container-fluid p-5 mb-2 bg-primary text-white">
+        <h1 class="text-center">Your Team's Page!</h1>
+    </header>
+
+    <main>
+        <div class="d-flex flex-wrap align-items-center justify-content-around m-5 p5">
+
+          ${createTeamTemplate(teamMembers)}
+
+        </div>
+    </main>
+
+</body>
+</html>
+
+  `
 
 }
 
 // Function to create team template
 function createTeamTemplate(teamMembers) {
-  const teamTemplates = [];
+  const teamTemplateArray = [];
 
+  // Manager
   const managersArray = teamMembers.filter(obj => {
     return obj.role === 'Manager';
   })
 
-  
+  const managersTemplateString = managersArray.map((manager) => generateManagerCard(manager)).join('\n \n')
+
+  teamTemplateArray.push(managersTemplateString);
+
+  // Engineer
+  const engineersArray = teamMembers.filter(obj => {
+    return obj.role === 'Engineer';
+  })
+
+  const engineersTemplateString = engineersArray.map((engineers) => generateEngineerCard(engineers)).join('\n \n')
+
+  teamTemplateArray.push(engineersTemplateString);
+
+  // Intern
+  const internsArray = teamMembers.filter(obj => {
+    return obj.role === 'Intern';
+  })
+
+  const internsTemplateString = internsArray.map((intern) => generateInternCard(intern)).join('\n \n')
+
+  teamTemplateArray.push(internsTemplateString);
+
+  // Making teamTemplates array into a string
+
+  const teamTemplateString = teamTemplates.join('\n \n');
+
+  return teamTemplateString;
+
 };
 
 // Functions to generate employee cards
-function generateManagerCard() {
-    const managerCard = `
+function generateManagerCard(manager) {
+  return `
     <div class="card m-2" style="width: 18rem;">
     <div class="card-header">
-      <h4>${}</h4>
-      <h5>Manager <span><i class="fa-solid fa-mug-saucer"></i></span></h5>
+      <h4>${manager.getName()}</h4>
+      <h5>${manager.getRole()} <span><i class="fa-solid fa-mug-saucer"></i></span></h5>
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">Name: ${}</li>
-      <li class="list-group-item">Id: ${}</li>
-      <li class="list-group-item">Email: <a href="${}">${}</a></li>
-      <li class="list-group-item">Office Number: ${}</li>
+      <li class="list-group-item">Id: ${manager.getId()}</li>
+      <li class="list-group-item">Email: <a href="${manager.getEmail()}">${manager.getEmail()}</a></li>
+      <li class="list-group-item">Office Number: ${manager.getOfficeNumber()}</li>
     </ul>
 </div>
     `
 }
 
-function generateEngineerCard() {
-    const engineerCard = `
+function generateEngineerCard(engineer) {
+  const engineerCard = `
     <div class="card m-2" style="width: 18rem;">
     <div class="card-header">
-      <h4>${}</h4>
-      <h5>Engineer <span><i class="fa-solid fa-glasses"></i></span></h5>
+      <h4>${engineer.getName()}</h4>
+      <h5>${engineer.getRole()} <span><i class="fa-solid fa-glasses"></i></span></h5>
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">Name: ${}</li>
-      <li class="list-group-item">Id: ${}</li>
-      <li class="list-group-item">Email: <a href="${}">${}</a></li>
-      <li class="list-group-item">GitHub: <a href="https://github.com/${}">${}</a></li>
+      <li class="list-group-item">Id: ${engineer.getId()}</li>
+      <li class="list-group-item">Email: <a href="${engineer.getEmail()}">${engineer.getEmail()}</a></li>
+      <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.getGitHub()}">${engineer.getGitHub()}</a></li>
     </ul>
 </div>
     `
 }
 
-function generateInternCard() {
-    const internCard = `
+function generateInternCard(intern) {
+  const internCard = `
     <div class="card m-2" style="width: 18rem;">
     <div class="card-header">
-      <h4>${}</h4>
-      <h5>Intern <span><i class="fa-solid fa-graduation-cap"></i></span></h5>
+      <h4>${intern.getName()}</h4>
+      <h5>${intern.getRole()} <span><i class="fa-solid fa-graduation-cap"></i></span></h5>
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">Name: ${}</li>
-      <li class="list-group-item">Id: ${}</li>
-      <li class="list-group-item">Email: <a href="${}">${}</a></li>
-      <li class="list-group-item">School: ${}</li>
+      <li class="list-group-item">Id: ${intern.getId()}</li>
+      <li class="list-group-item">Email: <a href="${intern.getEmail()}">${intern.getEmail()}</a></li>
+      <li class="list-group-item">School: ${intern.getSchool()}</li>
     </ul>
 </div>
     `
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// What Michael did
-`<div class="card employee-card" style="width: 18rem;">
-<div class="card-header">
-    <h2 class="card-title">${manager.getName()}</h2>
-    <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>${manager.getRole()}</h3>
-</div>
-<div class="card-body">
-    <ul class="list-group">
-        <li class="list-group-item">ID: ${manager.getId()}</li>
-        <li class="list-group-item">Email: <a href="${manager.getEmail()}">${manager.getEmail()}</a></li>
-        <li class="list-group-item">Office number: ${manager.getOfficeNumber()}</li>
-    </ul>
-</div>
-</div>
-`
 
 
 module.exports = generateHTML;
