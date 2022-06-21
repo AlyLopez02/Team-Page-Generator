@@ -10,8 +10,7 @@ const fs = require('fs');
 const generateHTML = require('./src/page-template');
 
 // I am unsure about these
-const outputFolder = './dist';
-const fileName = 'team-page.html';
+const pathToFile = path.join(__dirname, 'dist', "team-page.html");;
 
 const teamMembers = [];
 const employeeIds = [];
@@ -45,6 +44,7 @@ function createManagerFunction() {
         }
     ]).then(function (data) {
         const managerObj = new Manager(data); //THIS MIGHT NEED TO BE EACH THING SEPARATELY AKA data.name, data.id, ....
+        
         teamMembers.push(managerObj);
         employeeIds.push(managerObj.id);
         createTeam();
@@ -132,7 +132,12 @@ function addIntern() {
 };
 
 function buildTeam() {
-    generateHTML(teamMembers);
 
-    // NOT DONE YET ALDSIHGALIDFGLAKJLDGJFAJDFL;
+    const htmlString = generateHTML(teamMembers);
+
+    fs.writeFileSync( pathToFile, htmlString, function(err){
+        if (err) {
+            console.log('error')
+        } })
+
 };

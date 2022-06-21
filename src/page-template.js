@@ -70,7 +70,7 @@ function createTeamTemplate(teamMembers) {
 
   // Making teamTemplates array into a string
 
-  const teamTemplateString = teamTemplates.join('\n \n');
+  const teamTemplateString = teamTemplateArray.join('\n \n');
 
   return teamTemplateString;
 
