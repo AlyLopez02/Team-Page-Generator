@@ -4,7 +4,8 @@ describe("Employee", () => {
 
 // test instantiation of employee instance
 test("Employee class should create an object", () => {
-    expect(new Employee()).toBeInstanceOf(Employee);
+    let obj = new Employee();
+    expect(typeof(obj)).toBe("object");
 });
 
 // test constructor initialized with a name
@@ -13,25 +14,25 @@ test("Constructor initialized with a name", () => {
 
     let obj = new Employee(name);
 
-    expect(obj.name).toBe('Joel');
+    expect(obj.name).toBe(name);
 });
 
 // test constructor initialized with an id
 test("Constructor initialized with an id", () => {
-    const id = '123456789';
+    const id = '100';
 
-    let obj = new Employee(id);
+    let obj = new Employee("Polly", id);
 
-    expect(obj.id).toBe('123456789');
+    expect(obj.id).toBe(id);
 });
 
 // test constructor initialized with an email address
 test("Constructor initialized with an email address", () => {
-    const emailAddress = 'johndoe@placeholder.com';
+    const email = 'joel@placeholder.com';
 
-    let obj = new Employee(emailAddress);
+    let obj = new Employee("Joel", 100, email);
 
-    expect(obj.emailAddress).toBe('johndoe@placeholder.com');
+    expect(obj.email).toBe(email);
 });
 
 // test get name method
@@ -41,22 +42,18 @@ test("getName() should return this.name", () => {
 
     let obj = new Employee(name);
 
-    this.name = obj.name;
-
-    expect(Employee.getName()).toBe('Joel'); //I am unsure if this is correct
+    expect(obj.getName()).toBe(name); //I am unsure if this is correct
 
 });
 
 // test get Id method
 test("getId() should return this.id", () => {
 
-    const id = '123';
+    const id = '100';
 
-    let obj = new Employee(id);
+    let obj = new Employee("Joel", id);
 
-    this.id = obj.id;
-
-    expect(Employee.getId()).toBe('123'); //I am unsure if this is correct
+    expect(obj.getId()).toBe(id); //I am unsure if this is correct
 
 });
 
@@ -65,17 +62,19 @@ test("getEmail() should return this.email", () => {
 
     const email = 'joel@placeholder.com';
 
-    let obj = new Employee(email);
+    let obj = new Employee("Joel", 100, email);
 
-    this.email = obj.email;
-
-    expect(Employee.getEmail()).toBe('joel@placeholder.com'); //I am unsure if this is correct
+    expect(obj.getEmail()).toBe(email); //I am unsure if this is correct
 
 });
 
 // test get role method. it should return "Employee"
 test("getRole() should return 'Employee'", () => {
-    expect(Employee.getRole()).toBe('Employee');
+    const testValue = 'Employee';
+
+    let obj = new Employee("Joel", 100, 'joel@placeholder.com')
+
+    expect(obj.getRole()).toBe('Employee');
 });
 
 

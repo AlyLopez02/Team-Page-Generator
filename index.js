@@ -43,8 +43,10 @@ function createManagerFunction() {
             name: 'officeNumber'
         }
     ]).then(function (data) {
-        const managerObj = new Manager(data); //THIS MIGHT NEED TO BE EACH THING SEPARATELY AKA data.name, data.id, ....
+        const managerObj = new Manager(data.name, data.id, data.email, data.officeNumber);
         
+        console.log(managerObj);
+
         teamMembers.push(managerObj);
         employeeIds.push(managerObj.id);
         createTeam();
@@ -93,7 +95,10 @@ function addEngineer() {
             name: 'github'
         }
     ]).then(function (data) {
-        const engineerObj = new Engineer(data); //THIS MIGHT NEED TO BE EACH THING SEPARATELY AKA data.name, data.id, ....
+        const engineerObj = new Engineer(data.name, data.id, data.email, data.github);
+
+        console.log(engineerObj);
+
         teamMembers.push(engineerObj);
         employeeIds.push(engineerObj.id);
         createTeam();
@@ -121,10 +126,13 @@ function addIntern() {
         {
             type: 'input',
             message: "What is the intern's school?",
-            name: 'github'
+            name: 'school'
         }
     ]).then(function (data) {
-        const internObj = new Intern(data); //THIS MIGHT NEED TO BE EACH THING SEPARATELY AKA data.name, data.id, ....
+        const internObj = new Intern(data.name, data.id, data.email, data.school); 
+
+        console.log(internObj);
+
         teamMembers.push(internObj);
         employeeIds.push(internObj.id);
         createTeam();
@@ -133,9 +141,11 @@ function addIntern() {
 
 function buildTeam() {
 
-    const htmlString = generateHTML(teamMembers);
+    if (teamMembers === []){
+        return console.log('teamMembers array is empty')
+    };
 
-    fs.writeFileSync( pathToFile, htmlString, function(err){
+    fs.writeFileSync( pathToFile, generateHTML(teamMembers), function(err){
         if (err) {
             console.log('error')
         } })

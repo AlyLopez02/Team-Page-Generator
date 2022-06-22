@@ -1,3 +1,5 @@
+const Manager = require("../lib/manager");
+
 function generateHTML(teamMembers) {
   return `
   <!DOCTYPE html>
@@ -42,17 +44,21 @@ function createTeamTemplate(teamMembers) {
   const teamTemplateArray = [];
 
   // Manager
-  const managersArray = teamMembers.filter(obj => {
-    return obj.role === 'Manager';
+
+
+  const managersArray = teamMembers.filter(function(obj){
+    return obj.getRole() == 'Manager';
   })
+
+  console.log(managersArray);
 
   const managersTemplateString = managersArray.map((manager) => generateManagerCard(manager)).join('\n \n')
 
   teamTemplateArray.push(managersTemplateString);
 
   // Engineer
-  const engineersArray = teamMembers.filter(obj => {
-    return obj.role === 'Engineer';
+  const engineersArray = teamMembers.filter(function(obj){
+    return obj.getRole() == 'Engineer';
   })
 
   const engineersTemplateString = engineersArray.map((engineers) => generateEngineerCard(engineers)).join('\n \n')
@@ -60,8 +66,8 @@ function createTeamTemplate(teamMembers) {
   teamTemplateArray.push(engineersTemplateString);
 
   // Intern
-  const internsArray = teamMembers.filter(obj => {
-    return obj.role === 'Intern';
+  const internsArray = teamMembers.filter(function(obj){
+    return obj.getRole() == 'Intern';
   })
 
   const internsTemplateString = internsArray.map((intern) => generateInternCard(intern)).join('\n \n')
@@ -86,7 +92,7 @@ function generateManagerCard(manager) {
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">Id: ${manager.getId()}</li>
-      <li class="list-group-item">Email: <a href="${manager.getEmail()}">${manager.getEmail()}</a></li>
+      <li class="list-group-item">Email: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></li>
       <li class="list-group-item">Office Number: ${manager.getOfficeNumber()}</li>
     </ul>
 </div>
@@ -94,7 +100,7 @@ function generateManagerCard(manager) {
 }
 
 function generateEngineerCard(engineer) {
-  const engineerCard = `
+  return `
     <div class="card m-2" style="width: 18rem;">
     <div class="card-header">
       <h4>${engineer.getName()}</h4>
@@ -102,7 +108,7 @@ function generateEngineerCard(engineer) {
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">Id: ${engineer.getId()}</li>
-      <li class="list-group-item">Email: <a href="${engineer.getEmail()}">${engineer.getEmail()}</a></li>
+      <li class="list-group-item">Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></li>
       <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.getGitHub()}">${engineer.getGitHub()}</a></li>
     </ul>
 </div>
@@ -110,7 +116,7 @@ function generateEngineerCard(engineer) {
 }
 
 function generateInternCard(intern) {
-  const internCard = `
+  return `
     <div class="card m-2" style="width: 18rem;">
     <div class="card-header">
       <h4>${intern.getName()}</h4>
@@ -118,7 +124,7 @@ function generateInternCard(intern) {
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">Id: ${intern.getId()}</li>
-      <li class="list-group-item">Email: <a href="${intern.getEmail()}">${intern.getEmail()}</a></li>
+      <li class="list-group-item">Email: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></li>
       <li class="list-group-item">School: ${intern.getSchool()}</li>
     </ul>
 </div>
