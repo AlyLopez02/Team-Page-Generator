@@ -44,9 +44,6 @@ function createManagerFunction() {
         }
     ]).then(function (data) {
         const managerObj = new Manager(data.name, data.id, data.email, data.officeNumber);
-        
-        console.log(managerObj);
-
         teamMembers.push(managerObj);
         employeeIds.push(managerObj.id);
         createTeam();
@@ -96,9 +93,6 @@ function addEngineer() {
         }
     ]).then(function (data) {
         const engineerObj = new Engineer(data.name, data.id, data.email, data.github);
-
-        console.log(engineerObj);
-
         teamMembers.push(engineerObj);
         employeeIds.push(engineerObj.id);
         createTeam();
@@ -130,9 +124,6 @@ function addIntern() {
         }
     ]).then(function (data) {
         const internObj = new Intern(data.name, data.id, data.email, data.school); 
-
-        console.log(internObj);
-
         teamMembers.push(internObj);
         employeeIds.push(internObj.id);
         createTeam();
